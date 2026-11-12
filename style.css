@@ -1,0 +1,645 @@
+@font-face {
+    font-family: Natal;
+    src: url(./Fontes/Home\ Christmas.otf);
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 50px;
+    color: #60157bc1;
+    background: radial-gradient(ellipse at 85% 8%, #e3ffe4db, transparent 34rem), #ffffff;
+    font-family: "lores-21-serif", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 24px;
+    /* flex-direction: column; */
+}
+
+.marca {
+    font-family: natal;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: .42em;
+}
+
+nav {
+    display: flex;
+    gap: 34px;
+    align-items: center;
+}
+
+nav a {
+    color: #5a2800;
+    font-size: .94rem;
+    transition: color .2s ease;
+}
+
+nav a:hover,
+nav a.ativo {
+    color: #ff74fd;
+}
+
+.destaque {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: clamp(36px, 6vw, 82px);
+    align-items: center;
+    padding: 38px 0 112px;
+
+}
+
+.moldura {
+    position: relative;
+    min-height: 510px;
+}
+
+.foto-destaque {
+    width: 50%;
+    height: 510px;
+    object-fit: cover;
+    display: block;
+    border-radius: 22px;
+    box-shadow: 0 28px 80px #00000052;
+}
+
+.nota-foto {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ff74fd5b;
+    backdrop-filter: blur(12px);
+    border: 1px solid #00e1ff;
+    border-radius: 999px;
+    padding: 10px 15px;
+    font-size: .82rem;
+}
+
+.ponto {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00e1ff;
+}
+
+.rotulo {
+    color: #6c4221;
+    text-transform: uppercase;
+    letter-spacing: .28em;
+    font-size: .76rem;
+    font-weight: 700;
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
+h1 {
+    font-family: Comrade, sans-serif;
+    font-size: clamp(3rem, 5.6vw, 5.4rem);
+    line-height: .99;
+    letter-spacing: 0;
+    margin: 20px 0 24px;
+    max-width: 610px;
+}
+
+.texto-destaque>p {
+    max-width: 510px;
+    color: #b7b7c0;
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 16px 22px;
+    border-radius: 999px;
+    background: #00ff08;
+    color: #000000;
+    font-weight: 800;
+    font-size: .85rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+    background: #00ffff;
+}
+
+.link {
+    color: #00ffff;
+    font-size: .92rem;
+    border-bottom: 1px solid #ffffffc1;
+    padding-bottom: 5px;
+}
+
+.secao-galeria {
+    padding: 0 0 100px;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 28px;
+    margin-bottom: 28px;
+}
+
+.galeria {
+    display: flex;
+    gap: 12px;
+    height: 460px;
+    width: 100%;
+    overflow: visible;
+    /* overflow: invisible; */
+    /* overflow: scroll; */
+}
+
+.secao-galeria {
+    position: relative;
+    z-index: 1;
+}
+
+.cartao {
+    z-index: 0;
+}
+
+.cartao:hover,
+.cartao:focus-visible {
+    z-index: 3;
+}
+
+.cartao {
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid #06007b;
+    background: #30476b;
+    cursor: pointer;
+    transition: flex .6s cubic-bezier(.2, .8, .2, 1), border-radius .35s ease, border-color .35s ease;
+}
+
+.cartao::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, #ffffff86 20%, #ffffff00 42%, #000000c0 100%);
+    transition: background .35s ease;
+}
+
+/* pseudoelemento: algo criado no CSS que não está no HTML */
+
+.cartao img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: saturate(.82) brightness(.82);
+    transition: transform .75s cubic-bezier(.2, .8, .2, 1), filter .45s ease;
+}
+
+.cartao:hover,
+.cartao:focus-visible {
+    flex: 3;
+    border-color: #35b1ff;
+    outline: none;
+}
+
+.galeria:hover .cartai:not(:hover) img {
+    filter: grayscale(.72) brightness(.65)
+}
+
+.cartao:hover img,
+.cartao:focus-visible img {
+    transform: scale(1.06);
+    filter: saturate(1.08) brightness(.95);
+}
+
+.numero {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    top: 16px;
+    left: 16px;
+    font-size: .7rem;
+    letter-spacing: .12em;
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    transform: translate(-5px);
+    transition: opacity .25s ease, transforn .25s ease;
+}
+
+.titulo {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    left: 17px;
+    right: 12px;
+    bottom: 19px;
+    font-family: comrade, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #a0ffa3;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-transform: uppercase;
+    transition: all .35s ease;
+    text-shadow: 0 2px 10px #000000;
+}
+
+.descricao {
+    position: absolute;
+    z-index: 2;
+    left: 20px;
+    right: 20px;
+    bottom: 22px;
+    font-size: .92rem;
+    line-height: 1.5;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .3s ease .1s, transform .3s ease .1s;
+    max-width: 330px;
+    pointer-events: none;
+}
+
+.cartao:hover .titulo,
+.cartao:focus-visible .titulo {
+    writing-mode: horizontal-tb;
+    transform: none;
+    bottom: 76px;
+    left: 20px;
+    font-size: 18pt;
+}
+
+.cartao:hover .descricao,
+.cartao:focus-visible .descricao {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cartao:hover .numero,
+.cartao:focus-visible .numero {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.secao-historias {
+    padding: 0 0 105px;
+}
+
+.lista {
+    display: grid;
+    gap: 24px;
+}
+
+.historia {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+    align-items: stretch;
+    overflow: hidden;
+    border-radius: 22px;
+    background: linear-gradient(115deg, #00e1ff90, #00ff2666);
+    border: 1px solid #c800ff;
+    min-height: 330px;
+}
+
+.historia-invertida .foto {
+    order: 2;
+}
+
+.foto {
+    min-height: 330px;
+    position: relative;
+    overflow: hidden;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    transition: transform .7 ease;
+}
+
+.historia:hover .foto img {
+    transform: scale(1.045);
+}
+
+.indice {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 1;
+    background: #ff00e667;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 999%;
+    padding: 8px 12px;
+    font-size: .78rem;
+}
+
+.conteudo {
+    padding: clamp(28px, 5vw, 58px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.conteudo h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: xx-large;
+    letter-spacing: 5px;
+}
+
+.conteudo p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+
+}
+
+.conteudo .botao {}
+
+.rodape {
+    border-top: 1px solid rgb(0, 0, 0);
+    padding: 25px 0 35px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: rgb(0, 0, 0);
+    font-size: .82rem;
+}
+
+@media (max-width: 900px) {
+    .caixa {
+        width: min(100% - 40px, 720px);
+    }
+
+    .destaque {
+        grid-template-columns: 1fr;
+        padding: 24px 0 82px;
+        gap: 35px;
+    }
+
+    .moldura,
+    .foto-destaque {
+        min-height: 0;
+        height: 420px;
+    }
+
+    .texto-destaque {
+        order: -1;
+    }
+
+    h1 {
+        max-width: 720px;
+    }
+
+    .galeria {
+        height: 390px;
+        gap: 8px;
+    }
+
+    .cartao:hover,
+    .cartao:focus-visible {
+        flex: 2.8;
+    }
+
+    .dica {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .caixa {
+        width: calc(100% - 32px);
+    }
+
+    header {
+        min-height: 72px;
+    }
+
+    .marca {
+        font-size: .95rem;
+        letter-spacing: .3em;
+    }
+
+    nav {
+        display: flex;
+        position: static;
+        width: 100%;
+        padding: 0 0 12px;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .destaque {
+        padding-top: 22px;
+        padding-bottom: 68px;
+    }
+
+    h1 {
+        font-size: clamp(2.7rem, 13vw, 4rem);
+    }
+
+    .texto-destaque>p {
+        font-size: 1rem;
+    }
+
+    .moldura,
+    .foto-destaque {
+        height: 330px;
+    }
+
+    .cabecalho {
+        align-items: flex-start;
+    }
+
+    .secao-galeria {
+        padding-bottom: 65px;
+    }
+
+    .galeria {
+        height: 360px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 4px;
+    }
+
+    .cartao {
+        flex: 0 0 70px;
+        scroll-snap-align: start;
+    }
+
+    .cartao:hover,
+    .cartao:focus-visible {
+        flex: 0 0 230px;
+    }
+
+    .cartao .titulo {
+        font-size: .83rem;
+    }
+
+    .cartao:hover .titulo,
+    .cartao:focus-visible .titulo {
+        font-size: 1.3rem;
+    }
+
+    .secao-historias {
+        padding: 0 0 105px;
+    }
+
+    .lista {
+        display: grid;
+        gap: 24px;
+    }
+
+    .historia {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+        align-items: stretch;
+        overflow: hidden;
+        border-radius: 22px;
+        background: linear-gradient(115deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+        border: 1px solid rgba(255, 255, 255, .13);
+        min-height: 330px;
+    }
+
+    .historia-invertida .foto {
+        order: 2;
+    }
+
+    .foto {
+        min-height: 330px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .foto img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        object-fit: cover;
+        transition: transform .7s ease;
+    }
+
+    .historia:hover .foto img {
+        transform: scale(1.045);
+    }
+
+    .indice {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index: 1;
+        background: rgba(8, 15, 15, .75);
+        border: 1px solid rgba(255, 255, 255, .13);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: .78rem;
+    }
+
+    .conteudo {
+        padding: clamp(28px, 5vw, 58px);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .conteudo h3 {
+        font: 700 clamp(1.8rem, 3vw, 2.7rem)/1.08 Manrope, sans-serif;
+        letter-spacing: -.04em;
+        margin: 14px 0;
+    }
+
+    .conteudo p {
+        color: #b7c0bd;
+        line-height: 1.8;
+        max-width: 470px;
+        margin-bottom: 24px;
+    }
+
+    .conteudo .botao {
+        margin-top: 2px;
+    }
+
+    @media (max-width: 700px) {
+        .secao-historias {
+            padding-bottom: 70px;
+        }
+
+        .historia {
+            grid-template-columns: 1fr;
+        }
+
+        .historia-invertida .foto {
+            order: 0;
+        }
+
+        .foto {
+            min-height: 240px;
+        }
+
+        .conteudo {
+            padding: 28px 24px 30px;
+        }
+    }
+
+    .rodape {
+        flex-direction: column;
+    }
+}
